@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-family: "Roboto", sans-serif;
+            display: flex;
+            align-content: center;
+            line-height: 1.75rem;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .no {
+            color: transparent
+        }
+        div>table{
+            margin: 0 auto;
+        }
+        div>button{
+            margin: 0 auto
+        }
+    </style>
+    <script>
+        var numDigits = n => ('' + n).length 
+    </script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div style="margin: 0 auto; padding-left: 3rem; text-align: center; max-width: 500px;">
+        <h1>
+            Use the buttons below to play
+        </h1>
+        <h2>
+            ... or arrows/wasd work too ("r" to reset)
+        </h2>
+        <table style="margin: 0 auto">
+            <!--tables: for when you forget how to align divs-->
+            <tbody>
+                <tr>
+                    <td class="no">
+                        a
+                    </td>
+                    <td>
+                        <button class="butt" id="top">⬆️</button>
+                    </td>
+                    <td class="no">
+                        c
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="butt" id="midleft">⬅️</button>
+                    </td>
+                    <td id="mid" class="no">
+                        🙂
+                    </td>
+                    <td>
+                        <button class="butt" id="midright">➡️</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="no">
+                        a
+                    </td>
+                    <td>
+                        <button class="butt" id="bot">⬇️</button>
+                    </td>
+                    <td class="no">
+                        c
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="reset" style="margin-top: 1rem; margin-bottom: 0.5rem;" >reset game</button>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <button id="decreaseWidth">-</button>
+                    </td>
+                    <td>
+                        width
+                    </td>
+                    <td>
+                        <button id="increaseWidth">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="decreaseHeight">-</button>
+                    </td>
+                    <td>
+                        height
+                    </td>
+                    <td>
+                        <button id="increaseHeight">+</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- <button onclick="testFunction()">test</button> -->
+    <script>
+        addEventListener("keyup", function (e) {
+            switch (e.key) {
+                case "ArrowUp" || "w":
+                    moveUp()
+                    break
+                case "ArrowRight" || "d":
+                    moveRight()
+                    break
+                case "ArrowLeft" || "a":
+                    moveLeft()
+                    break
+                case "ArrowDown" || "s":
+                    moveDown()
+                    break
+                case "r":
+                    resetBoard()
+                    break
+            }
+        })
+        document.getElementById('reset').addEventListener('click', resetBoard)
+        document.getElementById('midright').addEventListener('click', moveRight)
+        document.getElementById('midleft').addEventListener('click', moveLeft)
+        document.getElementById('top').addEventListener('click', moveUp)
+        document.getElementById('bot').addEventListener('click', moveDown)
+        document.getElementById('increaseHeight').addEventListener('click', () => changeHeight(1))
+        document.getElementById('decreaseHeight').addEventListener('click', () => changeHeight(-1))
+        document.getElementById('increaseWidth').addEventListener('click', () => changeWidth(1))
+        document.getElementById('decreaseWidth').addEventListener('click', () => changeWidth(-1))
+
+    </script>
+</body>
+
+</html>
